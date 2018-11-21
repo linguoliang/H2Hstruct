@@ -83,12 +83,14 @@ def main():
     # your coding here
     options=_parse_args()
 
-    loopdomain.readloopfile('GSE63525_HUVEC_HiCCUPS_looplist.txt')
-    H2H_structs.readh2hgenetotable('singleH2H')
+    # loopdomain.readloopfile('GSE63525_GM12878_primary_HiCCUPS_looplist.txt')
+    # H2H_structs.readh2hgenetotable('singleH2H')
+    loopdomain.readloopfile('IMR90-10k-significantInteractions.txt')
+    H2H_structs.readh2hgenetotable('Intron07.bed')
     Overlab,Contain,Total,base=overlaborcontain(0,H2H_structs.biglist,1,2)
     # ratio=base/H2H_structs.h2hbase
     pcgene.readh2hgenetotable('humangenes')
-    Overlab,Contain,Total,base=overlaborcontain(0,pcgene.PClist,3,4)
+    #Overlab,Contain,Total,base=overlaborcontain(0,pcgene.PClist,3,4)
     ratio=base/pcgene.genebase
     print(Overlab,Contain,Total)
     print(Overlab/Total,Contain/Total,(Overlab+Contain)/Total)

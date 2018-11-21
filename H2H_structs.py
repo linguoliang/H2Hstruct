@@ -54,3 +54,15 @@ def readh2hgenetotable(filename):
         for element in inputfile:
             biglist.append(H2H_gene_structs(element.split('\t')))
             # h2hbase+=int(biglist[-1].inf[17])-int(biglist[-1].inf[16])+1
+
+def readh2hgenetotable(filename):
+    global h2hbase
+    with open(filename,'r') as inputfile:
+        for element in inputfile:
+            if element.find("#")!=0:
+                biglist.append(H2H_gene_structs(element.split('\t')))
+                # h2hbase+=int(biglist[-1].inf[17])-int(biglist[-1].inf[16])+1
+                break
+        for element in inputfile:
+            biglist.append(H2H_gene_structs(element.split('\t')))
+            # h2hbase+=int(biglist[-1].inf[17])-int(biglist[-1].inf[16])+1

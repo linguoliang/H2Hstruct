@@ -5,12 +5,13 @@
 import optparse
 import sys
 import time
-import os.re
+#import os.re
 import numpy as np
 from matplotlib import pyplot
 import seaborn as sns
 import pandas as pd
 from scipy import stats
+import matplotlib
 
 binsize=5000
 
@@ -24,9 +25,9 @@ listdis=[]
 star=0
 end=0
 listdisn=[]
-elementpath='Naive_SMC1_center.txt'
+elementpath='Primed_CTCF_center.txt'
 
-H2Hpath='H2Hgeneall.c'
+H2Hpath='singleH2H.c'
 Normal='humangeneall'
 with open(elementpath) as elmet:
     for item in elmet:
@@ -65,7 +66,21 @@ data=np.array(listdis)
 datab=np.array(listdisn)
 # pyplot.hist(data,bins=100)
 data=pd.Series(data,name='distance from center')
-sns.distplot(data,bins=100,color='r',hist=False)
-sns.distplot(datab,bins=100,color='g',hist=False)
+pyplot.hist(data,bins=10)
+# x=sns.distplot(data,bins=100,color='r',hist=False)
+# y=sns.distplot(datab,bins=100,color='g',hist=False)
+# pyplot.xlim((-4000,4000))
+# m=range(-4,5)
+# ticks=[x*1000 for x in m]
+# stringlist=[str(x)+"k" for x in m]
+# print(stringlist)
+# pyplot.xticks(ticks,stringlist)
+# pyplot.legend([x,y],("H2H genes","All genes"),"best", numpoints=1)
+pyplot.xticks(range(5), ('Tom', 'Dick', 'Harry', 'Sally', 'Sue'))
+form=matplotlib.ticker.AutoMinorLocator(n=3)
+x=pyplot.tick_params()
+print(x)
 pyplot.show()
 print('t-statistic = %6.3f pvalue = %6.4f' % stats.ttest_ind(data, datab))
+print('t-statistic = %6.3f pvalue = %6.4f' % stats.ranksums(data,datab))
+stats.ranksums(data,datab)

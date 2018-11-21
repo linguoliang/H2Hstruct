@@ -12,15 +12,18 @@ Dicts={}
 conter=0
 with open('Homo_sapiens.new') as inputfile:
     with open('singleH2H','w') as outfile:
-        for item in inputfile:
-            item=item.split('\t')
-            if not item[6] in Dicts:
-                Dicts[item[6]]=''
-                conter+=1
-                outfile.write(item[4]+'\t'+item[7]+'\t'+item[8]+'\n')
-            if not item[10] in Dicts:
-                Dicts[item[10]]=''
-                conter+=1
-                outfile.write(item[4]+'\t'+item[11]+'\t'+item[12]+'\n')
+        with open('singleH2H.c','w') as outfile1:
+            for item in inputfile:
+                item=item.split('\t')
+                if not item[6] in Dicts:
+                    Dicts[item[6]]=''
+                    conter+=1
+                    outfile.write(item[4]+'\t'+item[7]+'\t'+item[8]+'\n')
+                    outfile1.write(item[4]+'\t'+item[7]+'\t'+item[7]+'\t'+item[8]+'\n')
+                if not item[10] in Dicts:
+                    Dicts[item[10]]=''
+                    conter+=1
+                    outfile.write(item[4]+'\t'+item[11]+'\t'+item[12]+'\n')
+                   # outfile1.write(item[4]+'\t'+item[12]+'\t'+item[11]+'\t'+item[12]+'\n')
 
 print(conter)

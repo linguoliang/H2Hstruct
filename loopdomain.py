@@ -41,11 +41,11 @@ def caculatelooplength():
 def initloopdict(element):
     global loopbase
     listinf=element.split('\t')
-    if listinf[0] == listinf[3]:
-        char=listinf[0]
-        listdomain=listinf[1:3]
-        listdomain.append(listinf[4])
-        listdomain.append(listinf[5])
+    if listinf[2] == listinf[8]:
+        char=listinf[2]
+        listdomain=listinf[3:5]
+        listdomain.append(listinf[9])
+        listdomain.append(listinf[10])
         listdomain.append(listinf)
         loop=loopstruct(char,listdomain)
         loopbase+=loop.end-loop.start+1
